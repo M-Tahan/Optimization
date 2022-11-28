@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 import numpy as np
 import random
+import time
 class mapBuild:
     def __init__(self,root):
         self.canvas = Canvas(root, width=1400 , height= 1400)
