@@ -69,13 +69,14 @@ class mapBuild:
             elif nodes[i][2] == 5:
                 color = "brown"
             self.canvas.create_oval((nodes[i][0]-3),(nodes[i][1]-3),(nodes[i][0]+3),(nodes[i][1]+3),fill=color)
+            self.canvas.create_text((nodes[i][0]-3),(nodes[i][1]-3), text=i)
         self.canvas.create_line(900,5,700,5,fill="green",width=5)
         
 
         self.canvas.create_text(100,200, text="s")
 
-root = Tk()
-root.geometry("1000x1000")
-world = mapBuild(root)
-nodes = mapBuild(root).nodes_creator()
-mainloop()
+# root = Tk()
+# root.geometry("1000x1000")
+# world = mapBuild(root)
+# nodes = mapBuild(root).nodes_creator()
+# mainloop()
