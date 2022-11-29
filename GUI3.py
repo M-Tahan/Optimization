@@ -6,7 +6,9 @@ class mapBuild:
     def __init__(self,root):
         self.canvas = Canvas(root, width=1600 , height= 1600)
         self.canvas.pack()
-        self.canvas.create_line(400,250,800,250,fill="green",width=5) #centre_Square
+        # self.canvas.create_line(400,250,800,250,fill="green",width=5) #centre_Square
+        self.canvas.create_line(400,250,580,250,fill="green",width=5)
+        self.canvas.create_line(600,250,800,250,fill="green",width=5)
         self.canvas.create_line(800,250,980,250,fill="green",width=5) 
         self.canvas.create_line(1020,250,1200,250,fill="green",width=5) 
         self.canvas.create_line(1200,250,1200,355,fill="green",width=5)
