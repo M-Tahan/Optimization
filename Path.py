@@ -32,7 +32,7 @@ class path:
             #         x = x + 1
             #     self.new_path[i][0],self.new_path[i][1],self.new_path[i][2] = 1,1,1
             #     print(self.new_path) 
-            if (next_pos.all() == self.room1[6].all()) or (position.all() == self.room1[7].all()):
+            if ((next_pos[0][0] == self.room1[6][0]) and (next_pos[0][1] == self.room1[6][1])) or ((next_pos[0][0] == self.room1[7][0])and (next_pos[0][1] == self.room1[7][1])):
                 x = 0
                 while x < len(self.path):
                     self.new_path[x] = self.path[x]
