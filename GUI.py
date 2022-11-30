@@ -75,8 +75,8 @@ class mapBuild:
 
         self.canvas.create_text(100,200, text="s")
 
-# root = Tk()
-# root.geometry("1000x1000")
-# world = mapBuild(root)
-# nodes = mapBuild(root).nodes_creator()
-# mainloop()
+root = Tk()
+root.geometry("1000x1000")
+world = mapBuild(root)
+nodes = mapBuild(root).nodes_creator()
+mainloop()

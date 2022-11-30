@@ -3,6 +3,7 @@ from PIL import Image, ImageTk
 import numpy as np
 import random
 class mapBuild:
+    
     def __init__(self,root):
         self.canvas = Canvas(root, width=1600 , height= 1600)
         self.canvas.pack()
