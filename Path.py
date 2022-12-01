@@ -33,8 +33,14 @@ class path:
         new_path = np.array([[0 for _ in range(3)] for _ in range(1)])
         j=2
         x = 0
-        print(result, "res")
-        while position.all() != out.all():
+        w = out
+        o = np.array([[0 for _ in range(3)] for _ in range(1)])
+        
+        # o[0][0],o[0][1],o[0][2] = out[0][0],out[0][1],out[0][2]
+        o=w
+        k = 0
+        while (o[0] != next_pos[0][0]) and (o[1] != next_pos[0][1]) and (o[2] != next_pos[0][2]):
+        
             new_path = np.array([[0 for _ in range(3)] for _ in range(j)])
             x = 0
             while x < len(result):
@@ -75,7 +81,7 @@ class path:
                     next_pos[0][0] = next_pos[0][0] + 100
                 temp = next_pos[0][2]
                 next_pos[0][2] = path.get_level(room_nodes,next_pos)
-                print(1)
+                
                 
                 if next_pos[0][2] == 9:
                     rand =random.randint(2,8)
@@ -103,7 +109,7 @@ class path:
                     j=j-1 
 
             elif (rand ==2):
-                print(2)
+                
                 next_pos[0][0] = next_pos[0][0]-100
                 if next_pos[0][0] == -50:
                     next_pos[0][0] = next_pos[0][0] + 100
@@ -178,7 +184,7 @@ class path:
                     j=j-1 
 
             elif (rand ==4):
-                print(4)
+                
                 next_pos[0][0] = next_pos[0][0]+100
                 next_pos[0][1] = next_pos[0][1]+100
                 temp = next_pos[0][2]
@@ -220,7 +226,7 @@ class path:
                     j=j-1 
             
             elif (rand ==5):
-                print(5)
+                
                 next_pos[0][0] = next_pos[0][0]+100
                 next_pos[0][1] = next_pos[0][1]
                 temp = next_pos[0][2]
@@ -253,7 +259,7 @@ class path:
                     j=j-1 
 
             elif (rand ==6):
-                print(6)
+                
                 next_pos[0][0] = next_pos[0][0]+100
                 next_pos[0][1] = next_pos[0][1]-100
                 if next_pos[0][1] == -50:
@@ -300,7 +306,7 @@ class path:
                     j=j-1 
 
             elif (rand ==7):
-                print(7)
+                
                 next_pos[0][0] = next_pos[0][0]
                 next_pos[0][1] = next_pos[0][1]-100
                 if next_pos[0][1] == -50:
@@ -335,7 +341,7 @@ class path:
                     j=j-1 
 
             elif (rand ==8):
-                print(8)
+                
                 next_pos[0][0] = next_pos[0][0] -100
                 next_pos[0][1] = next_pos[0][1]-100
                 if next_pos[0][1] == -50:
@@ -380,8 +386,24 @@ class path:
             while x < len(new_path):
                     result[x] = new_path[x]
                     x = x + 1
-               
-        return(result)
+            k = k +1
+            if k > 50:
+                i=1
+                xmin,xmax,ymin,ymax = 0 ,20000 , 0 , 20000
+                next_pos = position
+                result = np.array([[0 for _ in range(3)] for _ in range(1)])
+                result = next_pos
+                new_path = np.array([[0 for _ in range(3)] for _ in range(1)])
+                j=2
+                x = 0
+                w = out
+                o = np.array([[0 for _ in range(3)] for _ in range(1)])
+                
+                # o[0][0],o[0][1],o[0][2] = out[0][0],out[0][1],out[0][2]
+                o=w
+                k = 0
+
+        return(new_path)
 
     def checkRand(rand):
         arr = [0,0,0,0,0,0,0,0,0]
@@ -403,7 +425,7 @@ class path:
             return(FALSE)
         return(FALSE)
 
-    def room2_path(self,nodes,position,sew):
+    def room2_path(self,nodes,position):
         self.room2 = np.array([[0 for _ in range(3)] for _ in range(21)])
         # GUI file:
         self.room2[0][0], self.room2[0][1], self.room2[0][2] = nodes[2][0], nodes[2][1], nodes[2][2]
@@ -481,7 +503,6 @@ class path:
         close_2 = np.array([[0 for _ in range(3)] for _ in range(1)])
         close_2[0][0], close_2[0][1], close_2[0][2] = nodes[18][0], nodes[18][1], nodes[18][2]
         room_path = path.Select_path(position,self.room4,nodes[57],close_2,close_1)
-        
         return(room_path) 
     def search(node,comp):
         i = 0 
@@ -494,8 +515,7 @@ class path:
         i = 0
         x = FALSE 
         while i < len(nodes):
-            print(nodes)
-            print(comp)
+            
             if (nodes[i][0] == comp[0][0]) and (nodes[i][1] == comp[0][1]) and (nodes[i][2] == comp[0][2]):
             
                 x = TRUE
@@ -517,57 +537,59 @@ class path:
             else:
                 x=9    
             p = p +1
-        print("x",x)
+        
         return(x)   
 
     def get_path_GUI1_room1(nodes,position):
         final_path1 = path().room1_path(nodes,position)
         pos_1 =np.array([[0 for _ in range(3)] for _ in range(1)])
         pos_1[0][0],pos_1[0][1],pos_1[0][2] = nodes[29][0], nodes[29][1], nodes[29][2]
-        print(pos_1)
-        final_path2 = path().room2_path(nodes,pos_1,[0,0,0])
+        
+        final_path2 = path().room2_path(nodes,pos_1)
         pos_2 =np.array([[0 for _ in range(3)] for _ in range(1)])
         pos_2[0][0],pos_2[0][1],pos_2[0][2] = nodes[46][0], nodes[46][1], nodes[46][2]
         # final_path3 = path().room3_path(nodes,pos_2)
         # pos_3 = final_path3[len(final_path3)-1]
         final_path4 = path().room4_path(nodes,pos_2)
-        print("4",final_path4)
+        
         num = len(final_path1) + len(final_path2)  + len(final_path4)
         gg = np.array([[0 for _ in range(3)] for _ in range(num)])
         
-        print(gg)
+        
         
         i = 0 
         j = 0
-        while i < (num-4):
+        while i < (num-3):
             while j < len(final_path1):
                 gg[i][0],gg[i][1],gg[i][2] = final_path1[j][0], final_path1[j][1], final_path1[j][2]
                 j = j+1
                 i = i+1
-                print("what?1")
+                
             j = 0
-            while j < len(final_path2)-1:
+            while j < len(final_path2):
                 gg[i][0],gg[i][1],gg[i][2] = final_path2[j][0], final_path2[j][1], final_path2[j][2]
                 j = j+1
                 i = i+1
-                print("what?2")
+                
             # while j < len(final_path3)-1:
             #     gg[i][0],gg[i][1],gg[i][2] = final_path3[j][0], final_path3[j][1], final_path3[j][2]
             #     j = j+1
             #     i = i+1
             j=0
-            while j < len(final_path4)-1:
+            while j < len(final_path4):
                 gg[i][0],gg[i][1],gg[i][2] = final_path4[j][0], final_path4[j][1], final_path4[j][2]
                 j = j+1
                 i = i+1
-                print("what?3")
+                
         return(gg)
-root = Tk()
-root.geometry("1000x1000")
-world = GUI.mapBuild(root)
-nodes = GUI.mapBuild(root).nodes_creator()
-mainloop()
-door1 = np.array([[0 for _ in range(3)] for _ in range(1)])
-door1[0][0],door1[0][1],door1[0][2] = nodes[47][0], nodes[47][1], nodes[47][2]
-gg = path().room4_path(nodes,door1)
-print(gg)
+# root = Tk()
+# root.geometry("1000x1000")
+# world = GUI.mapBuild(root)
+# nodes = GUI.mapBuild(root).nodes_creator()
+# mainloop()
+# door1 = np.array([[0 for _ in range(3)] for _ in range(1)])
+# door1[0][0],door1[0][1],door1[0][2] = nodes[0][0], nodes[0][1], nodes[0][2]
+# print(door1,"how")
+# gg = path.get_path_GUI1_room1(nodes,door1)
+# print(gg)
+# print(door1,"how")
