@@ -3,9 +3,66 @@ from PIL import Image, ImageTk
 import numpy as np
 import random
 class mapBuild:
+    def nodes_creator_room1(self):
+        l = random.randint(1,3)
+        self.nodes = np.array([[0 for _ in range(3)] for _ in range(8)])
+        self.nodes[7][0],self.nodes[7][1],self.nodes[7][2]= 80 , 400 , 0
+        self.nodes[1][1],self.nodes[1][1],self.nodes[1][2]= 50 , 50 , random.randint(1,3)
+        self.nodes[2][0],self.nodes[2][1],self.nodes[2][2]= 100 ,100 , random.randint(1,3)
+        self.nodes[3][0],self.nodes[3][1],self.nodes[3][2]= 50 , 100 , random.randint(1,3)
+        self.nodes[4][0],self.nodes[4][1],self.nodes[4][2]= 100 , 50 , random.randint(1,3)
+        self.nodes[5][0],self.nodes[5][1],self.nodes[5][2]= 50 , 150 , random.randint(1,3)
+        self.nodes[6][0],self.nodes[6][1],self.nodes[6][2]= 100 , 150 , random.randint(1,3)
+        nodes = self.nodes_creator_room1
+        color = ""
+        for i in range(8):
+            if nodes[i][2] == 0:
+                color = "black"
+            elif nodes[i][2] == 1:
+                color ="green"
+            elif nodes[i][2] == 2:
+                color ="orange"
+            elif nodes[i][2] == 3:
+                color ="yellow"
+            elif nodes[i][2] == 4:
+                color ="red"
+            elif nodes[i][2] == 5:
+                color ="brown"
+            for i in range(8):
+                self.canvas.create_oval((nodes[i][0]-3),(nodes[i][1]-3),(nodes[i][0]+3),(nodes[i][1]+3),fill=color)
+                self.canvas.create_text((nodes[i][0]-3),(nodes[i][1]-3), text=i)    
+        return(self.nodes)
+        
+
+    def nodes_creator_room2(self):
+        l = random.randint(1,3)
+        self.nodes = np.array([[0 for _ in range(3)] for _ in range(6)])
+        self.nodes[5][0],self.nodes[7][1],self.nodes[7][2]= 800 , 200 , 0
+        self.nodes[1][1],self.nodes[1][1],self.nodes[1][2]= 150 , 50 , l
+        self.nodes[2][0],self.nodes[2][1],self.nodes[2][2]= 150 ,100 , l
+        self.nodes[3][0],self.nodes[3][1],self.nodes[3][2]= 200 , 100 , l
+        self.nodes[4][0],self.nodes[4][1],self.nodes[4][2]= 200 , 50 , l
+        return(self.nodes)
+    def nodes_creator_room3(self):
+        l = random.randint(1,3)
+        self.nodes = np.array([[0 for _ in range(3)] for _ in range(6)])
+        self.nodes[5][0],self.nodes[7][1],self.nodes[7][2]= 400 , 140 , 0
+        self.nodes[1][1],self.nodes[1][1],self.nodes[1][2]= 150 , 50 , l
+        self.nodes[2][0],self.nodes[2][1],self.nodes[2][2]= 150 ,100 , l
+        self.nodes[3][0],self.nodes[3][1],self.nodes[3][2]= 200 , 100 , l
+        self.nodes[4][0],self.nodes[4][1],self.nodes[4][2]= 200 , 50 , l
+        return(self.nodes)
+    
+            
+
+
+
+       
     def __init__(self,root):
-        self.canvas = Canvas(root, width=1400 , height= 1400)
+        # nodes = self.nodes_creator_room1()
+        self.canvas = Canvas(root, width=1400 , height= 1000)
         self.canvas.pack()
+        self.canvas.create_line(0,800,1200,800,fill="green",width=5)
         self.canvas.create_line(0,0,200,0,fill="green",width=5)
         self.canvas.create_line(200,0,400,0,fill="green",width=5)
         self.canvas.create_line(0,0,0,400,fill="green",width=5)
@@ -37,8 +94,8 @@ class mapBuild:
         self.canvas.create_line(800,800,1200,800,fill="green",width=5)
         self.canvas.create_line(1200,420,1200,800,fill="green",width=5)
         
-        
 root = Tk()
-root.geometry("1400x1400")
+root.geometry("1200x900")
 world = mapBuild(root)
+nodes = mapBuild(root).nodes_creator_room1()
 mainloop()
