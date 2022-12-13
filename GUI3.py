@@ -46,13 +46,6 @@ class mapBuild:
         self.canvas.create_line(1400,250,1400,355,fill="green",width=5)
         self.canvas.create_line(1400,375,1400,500,fill="green",width=5) 
         self.canvas.create_line(1400,500,1200,500,fill="green",width=5)#
-        # self.canvas.create_line(0,800,400,800,fill="green",width=5)
-        # self.canvas.create_line(400,800,400,400,fill="green",width=5)
-        # self.canvas.create_line(400,800,800,800,fill="green",width=5)
-        # # self.canvas.create_line(800,0,1200,0,fill="green",width=5)
-        # self.canvas.create_line(1200,0,1200,380,fill="green",width=5)
-        # self.canvas.create_line(800,800,1200,800,fill="green",width=5)
-        # self.canvas.create_line(1200,420,1200,800,fill="green",width=5)
         
         
 root = Tk()
